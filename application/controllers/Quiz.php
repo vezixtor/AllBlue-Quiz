@@ -17,9 +17,12 @@ class Quiz extends CI_Controller {
 	}
 
 	public function create($errors = NULL) {
-		if(!empty($_POST)) echo '<pre>'; print_r($_POST); echo '</pre>'; //var_dump indentado
+		//if(!empty($_POST)) echo '<pre>'; print_r($_POST); echo '</pre>'; //var_dump indentado
 		if(!empty($_POST)) {
-			if($this->quiz->validaCriacaoDeQuiz()) $this->quiz->makeQuiz();
+			if($this->quiz->validaCriacaoDeQuiz()) {
+				$this->quiz->makeQuiz();
+				redirect('Quiz', 'refresh');
+			}
 			else $errors = $this->quiz->getValidationErrors();
 		}
 
@@ -31,7 +34,6 @@ class Quiz extends CI_Controller {
 	}
 
 	public function visualize() {
-		if(!empty($_POST)) echo '<pre>'; print_r($_POST); echo '</pre>'; //var_dump indentado
 		$quiz_id = $this->uri->segment(3);
 
 		$quizCover = $this->quiz->getCover($quiz_id);
@@ -58,5 +60,12 @@ class Quiz extends CI_Controller {
 
 	public function delete() {
 		echo $this->uri->segment(3);
+	}
+
+	public function result() {
+		if(!empty($_POST)) {
+			$winningResult = $this->quiz->findResult();
+			echo json_encode($winningResult);
+		}
 	}
 }

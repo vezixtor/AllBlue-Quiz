@@ -6,7 +6,7 @@ html, body{
   font-family: 'Open Sans', sans-serif;
   background-repeat: repeat;
   background-position: top center !important;
-  background-image: url('http://www.allbluevr.com/wp-content/uploads/2014/05/bg_20161.jpg');
+  background-image: url('assets/img/bg_20161.jpg');
   background-color: #4ba4c4;
 }
 
@@ -48,7 +48,9 @@ fieldset{
 .col {
 	display: block;
 	float:left;
-	margin: 0 0 0 1.6%;
+	/*margin: 0 0 0 1.6%;*/
+	padding-left: 5px;
+    padding-right: 5px;
 }
 
 .col:first-of-type {
@@ -157,7 +159,7 @@ fieldset{
   cursor: pointer;
   font-size: 14px !important;
   font-family: 'Open Sans', sans-serif !important;
-  position: absolute;
+  /*position: absolute;*/
   right: 20px;
   bottom: 20px;
 }
@@ -232,4 +234,8 @@ fieldset{
 
 .form-wrapper input[type="radio"]:checked + label h4{
   color: #3498db;
+}
+
+label {
+	margin-bottom: 10px;
 }

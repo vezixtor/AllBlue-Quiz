@@ -191,4 +191,31 @@ class QuizModel extends CI_Model {
     return $this->validationErrors;
   }
 
+  public function findResult() {
+    $answers = $this->input->post('answer');
+
+    $this->db->select('*');
+    $this->db->from('quiz_pontuacao');
+    $this->db->where_in('id_alternativa', $answers);
+    $query = $this->db->get();
+    $data = $query->result_array();
+    $result =  array();
+    foreach ($data as $pontuacao) {
+      if(isset($result[$pontuacao['id_resultado']]))
+        $result[$pontuacao['id_resultado']] += $pontuacao['pontos_valor'];
+      else
+        $result[$pontuacao['id_resultado']] = $pontuacao['pontos_valor'];
+    }
+    $greaterPoint = 0;
+    foreach ($result as $id_resultado => $somaDosPontos) {
+      if($somaDosPontos > $greaterPoint) {
+        $winningResult = $id_resultado;
+        $greaterPoint = $somaDosPontos;
+      }
+    }
+    //echo '<pre>'; print_r($result); echo '</pre>'; //var_dump indentado
+    //echo '<pre>'; print_r($winningResult); echo '</pre>'; //var_dump indentado
+    $query = $this->db->get_where('quiz_resultado', array('id' => $winningResult));
+    return $query->row();
+  }
 }

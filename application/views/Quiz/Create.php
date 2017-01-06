@@ -1,4 +1,9 @@
 
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Capa</a></li>
+  <li role="presentation"><a href="#">Resultados</a></li>
+  <li role="presentation"><a href="#">Perguntas</a></li>
+</ul>
 <div class="page-header">
   <h1>Quiz de facebook <small>AllBlue</small></h1>
 </div>
@@ -26,7 +31,7 @@
 
       <div class="panel panel-primary">
         <div class="panel-heading">Resultados</div>
-        <div class="panel-body" id="container-result">
+        <div class="panel-body">
         <?php for($i = 0; $i < 2; $i++): ?>
   		    <div class="row" id="element-result-<?= $i ?>">
       			<div class="col-sm-4" style="padding-right:0px;">
@@ -47,7 +52,7 @@
 
       <div class="questions">
         <?php for($i = 0; $i < 2; $i++): ?>
-          <div class="panel panel-primary">
+          <div id="element-question-<?= $i ?>" class="panel panel-primary">
             <div class="panel-heading">Pergunta <?php echo $i + 1; ?></div>
             <div class="panel-body">
           		<div class="row">
@@ -63,19 +68,19 @@
               <div class="alternatives">
                 <h4>Alternativas</h4>
                 <?php for($j = 0; $j < 2; $j++): ?>
-                  <div class="row">
+                  <div class="row spot-alternative">
                     <!-- Alternativas com figuras...
               			<div class="col-sm-3">
-              				<img src="http://lorempixel.com/150/130/cats/<?php echo $j + 7; ?>" alt="Imagem do pergunta" class="thumbnail">
+              				<img src="http://lorempixel.com/150/130/cats/<?php //echo $j + 7; ?>" alt="Imagem do pergunta" class="thumbnail">
               			</div> -->
               			<div class="col-sm-12">
               				  <div class="form-group">
               				    <textarea name="alternativa[<?= $i ?>][<?= $j ?>]" class="form-control" rows="2" placeholder="Texto da alternativa..."></textarea>
               				  </div>
               			</div>
-                    <div class="spot-alternative-points">
+                    <div class="col-sm-12 spot-alternative-points">
                     <?php for($k = 0; $k < 2; $k++): ?>
-                      <div class="col-sm-2 alternativa-points">
+                      <div class="col-xs-4 col-sm-2 alternativa-points">
                         <img src="http://lorempixel.com/100/100/cats/<?php echo $k + 1; ?>" alt="Imagem do Resultado" class="thumbnail">
                         <div class="">
                           <select class="form-control" name="pontuacao[<?= $i ?>][<?= $j ?>][<?= $k ?>]">
@@ -90,7 +95,7 @@
                     </div>
               		</div>
                 <?php endfor; ?>
-                <button type="button" class="btn btn-primary">+ Adicionar alternativa</button>
+                <button type="button" class="btn btn-primary more-alternative">+ Adicionar alternativa</button>
               </div>
             </div>
           </div>
@@ -98,7 +103,7 @@
 
         <div class="row">
           <div class="col-sm-12">
-            <button type="button" class="btn btn-primary btn-preenchido">+ Adicionar pergunta</button>
+            <button id="more-question" type="button" class="btn btn-primary btn-preenchido">+ Adicionar pergunta</button>
           </div>
         </div>
       </div>
@@ -130,3 +135,7 @@
     </div>
 	</div>
 </div>
+<script type="text/javascript">
+  //var ind
+  console.log('Tudo junto e misturado.');
+</script>

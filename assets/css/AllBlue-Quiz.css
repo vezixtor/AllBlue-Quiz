@@ -9,7 +9,9 @@
 .panel-body img {
   width: 100%;
 }
-
+.spot-alternative-points {
+  padding: 0px !important;
+}
 .alternativa-points .thumbnail {
   margin-bottom: 0px !important;
 }
